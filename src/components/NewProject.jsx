@@ -8,7 +8,7 @@ export default function NewProject() {
         <div>
             <p>
                 <Input label="Title" />
-                <Input label="Description" />\
+                <Input label="Description" />
                 <Input label="Due Date" />
             </p>
 
