@@ -5,7 +5,7 @@ import NewProject from './components/NewProject';
 function App() {
   const [projectsState, setprojectsState] = useState({
     selectedProjectId: undefined,
-    project: []
+    projects: []
   })
 
   function handleStartAddProject() {
@@ -16,10 +16,22 @@ function App() {
       }
     })
   }
-
+  function handleAddProject(projectData) {
+    const newProject = {
+      ...projectData,
+      id: Math.random()
+    }
+    setprojectsState(prevState => {
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject]
+      }
+    })
+  }
+  console.log(projectsState);
   let content;
   if (projectsState.selectedProjectId === null) {
-    content = <NewProject />
+    content = <NewProject onAdd={handleAddProject} />
   } else if (projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
